@@ -25,4 +25,22 @@ class CheckoutServiceSpec extends AnyFlatSpec with Matchers {
   private def fillBasket(apples: Int, oranges: Int): List[Fruit] = {
     List.fill(apples)(Apple) ::: List.fill(oranges)(Orange)
   }
+
+  behavior of "CheckoutService with offers"
+
+  it should " £8.60 when 22 Apples and 12 Oranges with buy one and get one offer on Apples" in {
+    new CheckoutService().checkout(fillBasket(22, 12), applyOffers = true) should equal("8.60")
+  }
+
+  it should " £2.35 when 2 Apples and 10 Oranges with buy one and get one offer on Apples" in {
+    new CheckoutService().checkout(fillBasket(2, 10), applyOffers = true) should equal("2.35")
+  }
+
+  it should " £ 6.00 when 35 Oranges with three for two offer on oranges" in {
+    new CheckoutService().checkout(fillBasket(0, 35), applyOffers = true) should equal("6.00")
+  }
+
+  it should " £3.60 when 2 Apples and 18 Oranges with 2 for 1 apples - three for two offer on oranges" in {
+    new CheckoutService().checkout(fillBasket(2, 18), applyOffers = true) should equal("3.60")
+  }
 }
