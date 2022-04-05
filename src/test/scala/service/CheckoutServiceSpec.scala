@@ -60,8 +60,8 @@ class CheckoutServiceSpec extends AnyFlatSpec with Matchers {
     new CheckoutService().checkout(fillBasket(0, 0, 11), applyOffers = true) should equal("1.20")
   }
 
-  it should " £3.35 when 2 Apples and 10 Oranges 10 bananas with buy one and get one offer on Apples" in {
-    new CheckoutService().checkout(fillBasket(2, 10, 10), applyOffers = true) should equal("3.35")
+  it should " £3.15 when 2 Apples and 10 Oranges 10 bananas with buy one and get one offer on Apples" in {
+    new CheckoutService().checkout(fillBasket(2, 10, 10), applyOffers = true) should equal("3.15")
   }
 
   it should " £3.60 when 11 banana 11 Apples with buy one and get one offer on Bananas" in {
@@ -80,7 +80,7 @@ class CheckoutServiceSpec extends AnyFlatSpec with Matchers {
     new CheckoutService().checkout(fillBasket(22, 0, 12), applyOffers = true) should equal("6.60")
   }
 
-  it should " £3.80 when 13 banana 12 Apples with buy one and get one offer on 22 Bananas" in {
-    new CheckoutService().checkout(fillBasket(12, 0, 22), applyOffers = true) should equal("3.80")
+  it should " £4.60 when 12 Apples and  22 Bananas with buy one and get one offer and cheaptest one is free" in {
+    new CheckoutService().checkout(fillBasket(12, 0, 22), applyOffers = true) should equal("4.60")
   }
 }
